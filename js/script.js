@@ -1,7 +1,7 @@
 const myLibrary = [];
 
 function Book(name, author, description, year, isRead) {
-    this.id = crypto.randomUUID();
+    // this.id = crypto.randomUUID();
     this.name = name;
     this.author = author;
     this.description = description;
@@ -12,7 +12,7 @@ function Book(name, author, description, year, isRead) {
 function addBookToLibrary(name, author, description, year, isRead) {
     const book = new Book(name, author, description, year, isRead);
     myLibrary.push(book);
-    console.log(book)
+    console.log(book);
 }
 
 //add books to library
@@ -50,12 +50,12 @@ function renderBooks() {
         const removeBook = document.createElement('button');
         removeBook.textContent = 'Remove Book';
         cardMenu.appendChild(removeBook);
-
+        //form a full card
         card.appendChild(title);
         card.appendChild(author);
         card.appendChild(description);
         card.appendChild(year);
-        card.appendChild(cardMenu)
+        card.appendChild(cardMenu);
         libraryContainer.appendChild(card);
     })
 }
