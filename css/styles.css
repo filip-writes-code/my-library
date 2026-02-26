@@ -1,7 +1,11 @@
-* {
+body {
     margin: 0;
     padding: 0;
     font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+html:has(#add-book[open]) {
+    overflow: hidden;
 }
 
 button {
@@ -33,13 +37,17 @@ button {
 .logo {
     background-color: #09637E;
     color: white;
-    padding: 0.7em;
+    padding: 1.2em;
     text-align: center;
+}
+
+.logo h1 {
+    margin: 0;
 }
 
 .menu {
     background-color: #088395;
-    padding: 0.7em;
+    padding: 0.8em;
     text-align: center;
 }
 
@@ -47,7 +55,7 @@ button {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 2em;
-    padding: 2em;
+    padding: 2em 6em;
 }
 
 .card {
@@ -71,4 +79,28 @@ button {
     justify-self: right;
     margin-top: 0.5em;
     margin-right: 1em;
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+dialog:open {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 3em;
+}
+
+dialog form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+dialog .form-buttons {
+    margin-top: 1em;
+    display: flex;
+    gap: 1em;
+    justify-content: center;
 }

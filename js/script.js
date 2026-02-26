@@ -1,7 +1,7 @@
 const myLibrary = [];
 
 function Book(name, author, description, year, isRead) {
-    // this.id = crypto.randomUUID();
+    this.uuid = crypto.randomUUID();
     this.name = name;
     this.author = author;
     this.description = description;
@@ -12,7 +12,6 @@ function Book(name, author, description, year, isRead) {
 function addBookToLibrary(name, author, description, year, isRead) {
     const book = new Book(name, author, description, year, isRead);
     myLibrary.push(book);
-    console.log(book);
 }
 
 //add books to library
@@ -30,9 +29,13 @@ addBookToLibrary('Rendezvous with Rama', 'Arthur C. Clarke', 'Rendezvous with Ra
 
 function renderBooks() {
     const libraryContainer = document.getElementById('library');
+    libraryContainer.innerHTML='';
+    
     myLibrary.forEach(book => {
         const card = document.createElement('div');
         card.classList.add('card');
+        //add UUID data
+        card.dataset.uuid = book.uuid;
         const title = document.createElement('h2');
         title.textContent = book.name;
         const author = document.createElement('h4');
@@ -43,7 +46,7 @@ function renderBooks() {
         description.textContent = book.description;
         const year = document.createElement('p');
         year.classList.add('year');
-        year.textContent = "Release Date: " + book.year;
+        year.textContent = "Release Year: " + book.year;
         //add menu on bottom of the card
         const cardMenu = document.createElement('div');
         cardMenu.classList.add('card-menu');
@@ -61,3 +64,32 @@ function renderBooks() {
 }
 
 renderBooks();
+
+const addBookDialog = document.getElementById('add-book');
+
+const confirmBtn = addBookDialog.querySelector('#confirmBtn');
+const formBookName = addBookDialog.querySelector('#book-name');
+const formAuthor = addBookDialog.querySelector('#author');
+const formDescription = addBookDialog.querySelector('#description');
+const formYear = addBookDialog.querySelector('#year');
+const formIsRead = addBookDialog.querySelector('#is-read');
+
+addBookDialog.addEventListener('close', (e) => {
+    formBookName.value='';
+    formAuthor.value='';
+    formDescription.value='';
+    formYear.value='';
+    formIsRead.checked = false;
+} );
+
+confirmBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const newBookName = formBookName.value;
+    const newBookAuthor = formAuthor.value;
+    const newBookDescription = formDescription.value;
+    const newBookYear = formYear.value;
+    const newBookIsRead = formIsRead.checked;
+    addBookToLibrary(newBookName, newBookAuthor, newBookDescription,newBookYear, newBookIsRead)
+    addBookDialog.close();
+    renderBooks();
+})

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Library</title>
     <link rel="stylesheet" href="css/styles.css">
+    <script src="js/script.js" defer></script>
 </head>
 <body>
     <div class="container">
@@ -13,11 +14,32 @@
                 <h1>My Little Library</h1>
             </div>
             <div class="menu">
-                <button>Add Book</button>
+                <button command="show-modal" commandfor="add-book">Add Book</button>
             </div>
         </div>
         <div id="library" class="library"></div>
     </div>
-    <script src="js/script.js"></script>
+<dialog id="add-book">
+    <form>
+        <label>Book Name: </label>
+        <input type="text" id="book-name" id="book-name">
+        <label>Author: </label>
+        <input type="text" id="author" id="author">
+        <label>Description</label>
+        <textarea id="description" name="description" rows="5" cols="30"></textarea>
+        <label>Release Year: </label>
+        <input type="text" id="year" name="year">
+        <section>
+            <label for="is-read">Did you read it already?</label>
+            <input type="checkbox" name="is-read" id="is-read">
+        </section>
+        <div class="form-buttons">
+            <button id="confirmBtn" value="default">Add Book</button>
+            <button value="Cancel" formmethod="dialog">Cancel</button>
+        </div>
+    </form>
+</dialog>
 </body>
+
+
 </html>
