@@ -9,6 +9,10 @@ function Book(name, author, description, year, isRead) {
     this.isRead = isRead;
 }
 
+Book.prototype.toggleRead = function () {
+    this.isRead = !this.isRead;
+}
+
 function addBookToLibrary(name, author, description, year, isRead) {
     const book = new Book(name, author, description, year, isRead);
     myLibrary.push(book);
@@ -78,6 +82,13 @@ function renderBooks() {
         const removeBook = document.createElement('button');
         removeBook.textContent = 'Remove Book';
         cardMenu.appendChild(removeBook);
+
+        isBookReadBtn.addEventListener('click', (e) => {
+            const indexToToggle = myLibrary.findIndex(item => 
+                item.uuid === book.uuid);
+            myLibrary[indexToToggle].toggleRead();
+            renderBooks();
+        })
 
         removeBook.addEventListener('click', (e) => {
             deleteBook(book.uuid);
