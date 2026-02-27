@@ -14,6 +14,14 @@ function addBookToLibrary(name, author, description, year, isRead) {
     myLibrary.push(book);
 }
 
+function deleteBook(uuidToDelete) {
+    const indexToDelete = myLibrary.findIndex(item => 
+        item.uuid === uuidToDelete
+    );
+    myLibrary.splice(indexToDelete,1);
+    renderBooks();
+}
+
 //add books to library
 addBookToLibrary('Book of Secrets', 'Zworley' , 'NY Times Bestseller for years in a row. Depicts all the secrets how to manioulate dog moms and dads to get all the treats you could possibly imagine. And all the pets.. Let\'s not forget about the pets.', 2025, false);
 
@@ -50,9 +58,20 @@ function renderBooks() {
         //add menu on bottom of the card
         const cardMenu = document.createElement('div');
         cardMenu.classList.add('card-menu');
+        
+        //is book read
+        const isBookRead = document.createElement('Button');
+        isBookRead.textContent = 'Read';
+        cardMenu.appendChild(isBookRead);
+
         const removeBook = document.createElement('button');
         removeBook.textContent = 'Remove Book';
         cardMenu.appendChild(removeBook);
+
+        removeBook.addEventListener('click', (e) => {
+            deleteBook(book.uuid);
+        })
+
         //form a full card
         card.appendChild(title);
         card.appendChild(author);

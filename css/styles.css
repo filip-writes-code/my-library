@@ -22,8 +22,8 @@ button {
     background-color: #EBF4F6;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 .header {
@@ -79,6 +79,8 @@ button {
     justify-self: right;
     margin-top: 0.5em;
     margin-right: 1em;
+    display: flex;
+    gap: 1em;
 }
 
 dialog::backdrop {
