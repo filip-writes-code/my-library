@@ -53,9 +53,10 @@ button {
 
 .library{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
     gap: 2em;
-    padding: 2em 6em;
+    width: 80%;
+    margin: 2em 0;
 }
 
 .card {
