@@ -10,7 +10,7 @@ class Library {
     
     addBookToLibrary(name, author, description, year, isRead) {
         const book = new Book(name, author, description, year, isRead);
-        this.library.push(book);
+        this.library.unshift(book);
     }
 
     deleteBook(uuidToDelete) {
