@@ -43,7 +43,7 @@ const myLibrary = new Library;
 
 
 //add books to library
-myLibrary.addBookToLibrary('Book of Secrets', 'Zworley' , 'NY Times Bestseller for years in a row. Depicts all the secrets how to manioulate dog moms and dads to get all the treats you could possibly imagine. And all the pets.. Let\'s not forget about the pets.', 2025, false);
+myLibrary.addBookToLibrary('Book of Secrets', 'Zworley' , 'NY Times Bestseller for years in a row. Depicts all the secrets how to manipulate dog moms and dads to get all the treats you could possibly imagine. And all the pets.. Let\'s not forget about the pets.', 2025, false);
 
 myLibrary.addBookToLibrary('Brimstone', 'Callie Hart' , 'Second book in the Fae & Alchemy series, a dark fantasy romance that continues the story of Queen Saeris and Kingfisher, focusing on political intrigue, danger, and their developing relationship as they face threats to their realm.', 2025, false);
 
