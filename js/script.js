@@ -123,8 +123,10 @@ function renderBooks() {
 renderBooks();
 
 const addBookDialog = document.getElementById('add-book');
+const addBookForm = document.getElementById('add-book-form')
 
 const confirmBtn = addBookDialog.querySelector('#confirmBtn');
+const closeBtn = addBookDialog.querySelector('#close');
 const formBookName = addBookDialog.querySelector('#book-name');
 const formAuthor = addBookDialog.querySelector('#author');
 const formDescription = addBookDialog.querySelector('#description');
@@ -139,7 +141,7 @@ addBookDialog.addEventListener('close', (e) => {
     formIsRead.checked = false;
 } );
 
-confirmBtn.addEventListener('click', (e) => {
+addBookForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const newBookName = formBookName.value;
     const newBookAuthor = formAuthor.value;
@@ -149,4 +151,16 @@ confirmBtn.addEventListener('click', (e) => {
     myLibrary.addBookToLibrary(newBookName, newBookAuthor, newBookDescription,newBookYear, newBookIsRead)
     addBookDialog.close();
     renderBooks();
+})
+
+confirmBtn.addEventListener('click', (e) => {
+    formBookName.setCustomValidity('')
+    if (!formBookName.validity.valid) {
+        formBookName.setCustomValidity('Book name is required')
+    }
+})
+
+closeBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    addBookDialog.close()
 })
